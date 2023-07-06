@@ -1,0 +1,28 @@
+body {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+header {
+  text-align: center;
+}
+
+.topRow,
+.middleRow,
+.bottomRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+}
+
+.reset {
+  display: block;
+  margin: auto;
+}
