@@ -18,6 +18,10 @@ boxes.forEach((box) => {
     if (event.target.innerText == "") {
       event.target.innerText = currentPlayer;
 
+      if (checkForWin()) {
+        console.log(`${currentPlayer} wins!`);
+      }
+
       currentPlayer = currentPlayer === "X" ? "O" : "X";
     }
   });
@@ -31,6 +35,34 @@ resetButton.addEventListener("click", () => {
   });
   currentPlayer = "X";
 })
+
+function checkForWin() {
+  let boxesArray = Array.from(boxes);
+
+  let values = boxesArray.map(box => box.innerText);
+
+  for (let i = 0; i < 9; i += 3) {
+    if (values[i] === currentPlayer && values[i + 1] === currentPlayer && values[i + 2] === currentPlayer) {
+      return true;
+    }
+  }
+
+  for (let i = 0; i < 3; i++) {
+    if (values[i] === currentPlayer && values[i + 3] === currentPlayer && values[i + 6] === currentPlayer) {
+      return true;
+    }
+  }
+
+  if (values[0] === currentPlayer && values[4] === currentPlayer && values[8] === currentPlayer) {
+    return true;
+  }
+
+  if (values[2] === currentPlayer && values[4] === currentPlayer && values[6] === currentPlayer) {
+    return true;
+  }
+
+  return false;
+}
 
 
 // Below is the same lines of code but written with arrow functions
