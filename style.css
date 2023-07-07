@@ -23,9 +23,12 @@ header {
   text-align: center;
   line-height: 100px;
   font-size: 100px;
+  /* margin: 10px; looks like this will space out all the 
+  boxes w/ 10px between - good for the matching game */
 }
 
 .reset {
   display: block;
   margin: auto;
+  margin-top: 10px;
 }

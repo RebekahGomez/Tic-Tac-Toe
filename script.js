@@ -24,9 +24,14 @@ boxes.forEach((box) => {
         setTimeout(() => {
           alert(`${currentPlayer} wins!`);
         }, 10);
+      } else if (checkForTie()) {
+        setTimeout(() => {
+          alert("It's a tie!");
+        }, 10);
       }
-
-      currentPlayer = currentPlayer === "X" ? "O" : "X";
+      if (!gameOver) {
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
+      }
     }
   });
 });
@@ -67,6 +72,18 @@ function checkForWin() {
   }
 
   return false;
+}
+
+function checkForTie() {
+  let allBoxesFilled = true;
+  let boxesArray = Array.from(boxes);
+  for (let i = 0; i < boxesArray.length; i++) {
+    if (boxesArray[i].innerText === "") {
+      allBoxesFilled = false;
+      break;
+    }
+  }
+  return allBoxesFilled;
 }
 
 
