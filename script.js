@@ -11,15 +11,19 @@
 
 let boxes = document.querySelectorAll(".box");
 let currentPlayer = "X"
+let gameOver = false;
 
 boxes.forEach((box) => {
   box.addEventListener("click", (event) => {
     console.log(event.target.innerText)
-    if (event.target.innerText == "") {
+    if (!gameOver && event.target.innerText == "") {
       event.target.innerText = currentPlayer;
 
       if (checkForWin()) {
-        console.log(`${currentPlayer} wins!`);
+        gameOver = true;
+        setTimeout(() => {
+          alert(`${currentPlayer} wins!`);
+        }, 10);
       }
 
       currentPlayer = currentPlayer === "X" ? "O" : "X";
@@ -34,6 +38,7 @@ resetButton.addEventListener("click", () => {
     box.innerText = "";
   });
   currentPlayer = "X";
+  gameOver = false;
 })
 
 function checkForWin() {
